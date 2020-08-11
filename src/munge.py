@@ -11,10 +11,10 @@ import os
 log = dict()
 
 
-os.chdir('/Users/katiepelton/Desktop/Urban-AQ/Data')
+os.chdir('/Users/katiepelton/Desktop/urban-aq/nmf/data')
 
 # Import the ACSM results
-acsm = pd.read_csv('1D_clean.csv')
+acsm = pd.read_csv('1d-clean.csv')
 
 
 # Convert the timestamp to datetimes and then adjust to Kolkata
@@ -25,7 +25,7 @@ acsm = acsm.iloc[::-1]
 
 # set the index as the datetime
 acsm.set_index("timestamp_iso", inplace=True)
-print(acsm[:10])
+# print(acsm[:10])
 
 # set to kolkata
 acsm.index = acsm.index.tz_localize("Asia/Kolkata")
@@ -168,10 +168,10 @@ log['ACSM']['shape']['cleaned'] = acsm.shape
 # }
 
 # export the data
-acsm.to_csv('hagan-cleaned.csv')
+acsm.to_csv('1d-munged.csv')
 
 # export to feather
-feather.write_dataframe(acsm.reset_index(),'hagan-cleaned.feather')
+feather.write_dataframe(acsm.reset_index(),'1d-munged.feather')
 
 # # dump the log
 # with open(snakemake.output["log"], "w") as f:

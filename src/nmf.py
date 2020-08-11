@@ -13,7 +13,7 @@ import pandas as pd
 from sklearn.decomposition import NMF
 import os
 
-os.chdir('/Users/katiepelton/Desktop/Urban-AQ/Data')
+os.chdir('/Users/katiepelton/Desktop/urban-aq/nmf/data')
 
 # the number of factors
 N_COMPONENTS = 3
@@ -21,7 +21,7 @@ N_COMPONENTS = 3
 COLS_TO_INCLUDE = ['co2', 'co', 'no2', 'o3', 'pm1', 'pm25', 'pm10']
 
 # for k, (sn, filepath) in enumerate(zip(snakemake.config['serial_numbers'], snakemake.input)):
-df = feather.read_dataframe('hagan-cleaned.feather')
+df = feather.read_dataframe('1d-munged.feather')
 
 # set the index
 df.set_index("timestamp_iso", inplace=True)
@@ -68,5 +68,5 @@ feather.write_dataframe(results.reset_index(), 'timeseries-results.feather')
 results.to_csv('timeseries-results.csv')
 
 # export the composition results
-feather.write_dataframe(res.reset_index(), 'copmosition-results.feather')
+feather.write_dataframe(res.reset_index(), 'composition-results.feather')
 res.to_csv('composition-results.csv')

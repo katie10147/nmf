@@ -1,1 +1,0 @@
-exec(compile(open('hello.py', "rb").read(), 'hello', 'exec'), globals, locals)

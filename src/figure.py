@@ -9,7 +9,7 @@ import matplotlib.dates as mdates
 from matplotlib.ticker import FuncFormatter
 import os
 
-os.chdir('/Users/katiepelton/Desktop/Urban-AQ/Data')
+os.chdir('/Users/katiepelton/Desktop/urban-aq/nmf/data')
 
 # force the math text to look normal
 mpl.rcParams['mathtext.default'] = 'regular'
@@ -32,10 +32,10 @@ sns.set("paper", "ticks", color_codes=True, palette='colorblind')
 ts = pd.read_feather('timeseries-results.feather').set_index("timestamp_iso")
 
 # load the composition data
-comp = pd.read_feather('copmosition-results.feather')
+comp = pd.read_feather('composition-results.feather')
 
 # # load the bootstrapped results
-bs = pd.read_feather('bs.feather')
+bs = pd.read_feather('bootstrap.feather')
 
 # set up the figure
 fig = plt.figure(figsize=(9, 3))

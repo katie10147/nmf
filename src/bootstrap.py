@@ -12,7 +12,7 @@ import pandas as pd
 from sklearn.decomposition import NMF
 import os
 
-os.chdir('/Users/katiepelton/Desktop/Urban-AQ/Data')
+os.chdir('/Users/katiepelton/Desktop/urban-aq/nmf/data')
 
 # the number of factors
 N_COMPONENTS = 3
@@ -23,7 +23,7 @@ COLS_TO_INCLUDE = ['co2', 'co', 'no2', 'o3', 'pm1', 'pm25', 'pm10']
 frame = []
 
 # load the raw data
-df = pd.read_feather('hagan-cleaned.feather').set_index("timestamp_iso")
+df = pd.read_feather('1d-munged.feather').set_index("timestamp_iso")
 
 # drop all rows where there are nans
 df = df.dropna(subset=COLS_TO_INCLUDE)
@@ -73,5 +73,5 @@ for iter in range(100):
 frame = pd.concat(frame, sort=False)
 
 # save the data
-frame.to_csv('bs.csv')
-frame.reset_index().to_feather('bs.feather')
+frame.to_csv('bootstrap.csv')
+frame.reset_index().to_feather('bootstrap.feather')
