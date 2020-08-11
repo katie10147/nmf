@@ -49,7 +49,7 @@ log['ACSM'] = {
 }
 
 # keep only the desired data between t0-tf
-acsm = acsm['2020-05-02':'2020-05-12']
+acsm = acsm['2020-04-05':'2020-04-15']
 
 # fill in nans with 0
 acsm = acsm.fillna(0.)
